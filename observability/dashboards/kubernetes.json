@@ -1,1 +1,44 @@
-
+{
+  "title": "Kubernetes Cluster Overview",
+  "time": { "from": "now-1h", "to": "now" },
+  "panels": [
+    {
+      "type": "stat",
+      "title": "Cluster CPU Usage",
+      "targets": [
+        {
+          "expr": "sum(rate(container_cpu_usage_seconds_total[5m]))"
+        }
+      ]
+    },
+    {
+      "type": "stat",
+      "title": "Cluster Memory Usage",
+      "targets": [
+        {
+          "expr": "sum(container_memory_working_set_bytes)"
+        }
+      ]
+    },
+    {
+      "type": "graph",
+      "title": "Pod Count",
+      "targets": [
+        {
+          "expr": "count(kube_pod_info)"
+        }
+      ]
+    },
+    {
+      "type": "graph",
+      "title": "Node Status",
+      "targets": [
+        {
+          "expr": "kube_node_status_condition"
+        }
+      ]
+    }
+  ],
+  "schemaVersion": 37,
+  "version": 1
+}
