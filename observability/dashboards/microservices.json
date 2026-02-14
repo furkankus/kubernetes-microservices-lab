@@ -1,1 +1,44 @@
-
+{
+  "title": "Microservices Overview",
+  "time": { "from": "now-1h", "to": "now" },
+  "panels": [
+    {
+      "type": "stat",
+      "title": "Request Rate",
+      "targets": [
+        {
+          "expr": "sum(rate(http_requests_total[1m]))"
+        }
+      ]
+    },
+    {
+      "type": "graph",
+      "title": "Response Latency",
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket[5m])) by (le))"
+        }
+      ]
+    },
+    {
+      "type": "stat",
+      "title": "Error Rate",
+      "targets": [
+        {
+          "expr": "sum(rate(http_requests_total{status=~\"5..\"}[1m]))"
+        }
+      ]
+    },
+    {
+      "type": "graph",
+      "title": "Pod CPU Usage",
+      "targets": [
+        {
+          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"prod\"}[5m]))"
+        }
+      ]
+    }
+  ],
+  "schemaVersion": 37,
+  "version": 1
+}
