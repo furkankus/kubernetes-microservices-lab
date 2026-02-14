@@ -17,7 +17,23 @@ Enterprise-grade observability stack for Kubernetes clusters.
 - Distributed tracing
 - Alerting & notifications
 
+## Logs & Tracing
+
+- Loki: Centralized logging
+- Tempo: Distributed tracing
+
+This setup enables full request tracing across microservices.
+
 ## Installation
 
 ```bash
-./install.sh
+helm repo add grafana https://grafana.github.io/helm-charts
+helm upgrade --install loki grafana/loki-stack \
+  -n monitoring \
+  -f helm-values/loki-stack.yaml./install.sh
+
+```bash
+helm upgrade --install tempo grafana/tempo \
+  -n monitoring \
+  -f helm-values/tempo.yaml
+
