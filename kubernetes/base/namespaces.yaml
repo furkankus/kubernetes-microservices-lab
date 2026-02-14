@@ -1,1 +1,17 @@
+```yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dev
 
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: prod
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: monitoring
