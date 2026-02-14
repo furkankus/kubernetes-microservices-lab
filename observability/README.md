@@ -32,7 +32,6 @@ helm upgrade --install loki grafana/loki-stack \
   -n monitoring \
   -f helm-values/loki-stack.yaml./install.sh
 
-```bash
 helm upgrade --install tempo grafana/tempo \
   -n monitoring \
   -f helm-values/tempo.yaml
