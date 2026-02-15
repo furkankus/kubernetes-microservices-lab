@@ -1,1 +1,16 @@
+name: GitOps Deploy
 
+on:
+  workflow_run:
+    workflows: ["Build & Push Docker Images"]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger ArgoCD Sync
+        run: |
+          echo "Deployment triggered via GitOps"
